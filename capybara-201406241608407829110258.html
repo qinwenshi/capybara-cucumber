@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+        <meta charset="utf-8" />
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+<title>微信公众平台</title>
+<script type="text/javascript">
+    var mp = {time:{begin:(+new Date())}};
+    var page_all_dom_load_id = 23521, page_all_dom_load_key = 9;
+    var page_all_onload_id = 23521, page_all_onload_key = 10;
+    var page_all_js_script_id = 23521, page_all_js_script_key = 11;
+    var page_all_ava_id = 23521, page_all_ava_key = 12;
+
+    var report_ports = [];
+    wx_save_report = function(id, key, time){
+        report_ports.push(id + "_" + key + "=" + time);    
+    };
+    wx_report = function(){
+        if (report_ports.length == 8){
+            if (Math.random() &lt; 1){//采样
+                var _img = new Image(1, 1);
+                _img.src = "/misc/jsreport?type=avg&amp;r=" + Math.random() + "&amp;" + report_ports.join("&amp;") + "&amp;" 
+                        + page_dom_load_id  + "_" + page_dom_load_key  + "|"
+                        + page_js_script_id + "_" + page_js_script_key + "|"
+                        + page_ava_id       + "_" + page_ava_key       + "="
+                        + (script_begin-mp.time.domLoaded);
+            }
+        }
+    };
+    wx_main = function(mod){
+        var script_end = (+(new Date()));
+        console.log('Script Exec Time : %s ms'.sprintf(script_end - script_begin));
+        if (
+                typeof page_js_script_id != "undefined" &amp;&amp; typeof page_js_script_key != "undefined"
+                &amp;&amp; typeof page_ava_id != "undefined" &amp;&amp; typeof page_ava_key != "undefined"
+            ){
+            wx_save_report(page_js_script_id, page_js_script_key, script_end - script_begin);
+            wx_save_report(page_all_js_script_id, page_all_js_script_key, script_end - script_begin);
+            wx_save_report(page_ava_id, page_ava_key, script_end - mp.time.begin);
+            wx_save_report(page_all_ava_id, page_all_ava_key, script_end - mp.time.begin);
+            wx_report();
+        }
+    };
+</script>
+<link rel="Shortcut Icon" href="https://res.wx.qq.com/mpres/htmledition/images/favicon1df61f.ico" />
+<link href="https://res.wx.qq.com/mpres/htmledition/style/base/layout_head1e6c26.css" type="text/css" rel="stylesheet" />
+<link href="https://res.wx.qq.com/mpres/htmledition/style/base/base1e6c26.css" type="text/css" rel="stylesheet" />
+<link href="https://res.wx.qq.com/mpres/htmledition/style/base/lib1e6be4.css" type="text/css" rel="stylesheet" />
+
+        
+<link href="https://res.wx.qq.com/mpres/htmledition/ueditor/themes/default/ueditor1e6c26.css" rel="stylesheet" />
+<link href="https://res.wx.qq.com/mpres/htmledition/style/page/media/appmsg_edit1e6c26.css" rel="stylesheet" />
+<link href="https://res.wx.qq.com/c/=/mpres/htmledition/style/widget/verifycode1e6be4.css,/mpres/htmledition/style/biz_web/widget/dropdown1e6be4.css,/mpres/htmledition/style/widget/datepicker1e6c26.css,/mpres/htmledition/style/widget/upload1e6be4.css,/mpres/htmledition/style/widget/date_select1e6c26.css,/mpres/htmledition/style/widget/media/appmsg_editor1e6be4.css" type="text/css" rel="stylesheet" />
+
+    <style></style><script src="/mpres/htmledition/ueditor/lang/zh_CN/zh_CN.js?v=1.2.6.1" type="text/javascript" defer="defer"></script><link href="/mpres/htmledition/ueditor/themes/default/css/ueditor.css?v=1.2.6.1" type="text/css" rel="stylesheet" /><script src="/mpres/htmledition/ueditor/third-party/codemirror/codemirror.js?v=1.2.6.1" type="text/javascript" defer="defer"></script><link rel="stylesheet" type="text/css" href="/mpres/htmledition/ueditor/third-party/codemirror/codemirror.css?v=1.2.6.1" /></head>
+    <body class="zh_CN">
+        <div id="header" class="head">
+            <div class="head_box">
+	<div class="inner wrp">
+		<h1 class="logo"><a title="微信公众平台" href="/"></a></h1>
+		<div class="account">
+					<div class="account_meta account_info">
+                				<a class="nickname" href="/cgi-bin/settingpage?t=setting/index&amp;action=index&amp;token=1707207416&amp;lang=zh_CN">意启InnoLauncher</a>
+                								<label class="type icon_subscribe_label" for="">订阅号</label>
+				                				<a href="/cgi-bin/settingpage?t=setting/index&amp;action=index&amp;token=1707207416&amp;lang=zh_CN"><img class="avatar" src="/misc/getheadimg?fakeid=2392020057&amp;token=1707207416&amp;lang=zh_CN" /></a>
+							</div>
+			<div class="account_meta account_inbox" id="accountArea">
+                				<a class="account_inbox_switch" href="/cgi-bin/frame?t=notification/index_frame&amp;lang=zh_CN&amp;token=1707207416">
+					<i class="icon_common inbox">通知</i> 
+					                </a>
+                			</div>
+			<div class="account_meta account_logout"><a href="/cgi-bin/logout?t=wxm-logout&amp;lang=zh_CN&amp;token=1707207416" id="logout">退出</a></div>
+				</div>
+	</div>
+</div>
+
+        </div>
+        <div class="body page_appmsg_edit" id="body">
+            <div class="container_box side_l" id="js_container_box">
+                
+                                <div class="col_side">
+                    <div id="menuBar" class="menu_box"><dl class="menu  no_extra  closed" id="menu_function"><dt class="menu_title"><i class="icon_menu function"></i><i class="icon_menu_switch"></i>功能</dt><dd class="menu_item " id="menu_masssend"><a href="/cgi-bin/masssendpage?t=mass/send&amp;token=1707207416&amp;lang=zh_CN">群发功能</a></dd><dd class="menu_item " id="menu_advanced"><a href="/advanced/advanced?action=index&amp;t=advanced/index&amp;token=1707207416&amp;lang=zh_CN">高级功能</a></dd></dl><dl class="menu  selected  " id="menu_manage"><dt class="menu_title"><i class="icon_menu manage"></i><i class="icon_menu_switch"></i>管理</dt><dd class="menu_item " id="menu_message"><a href="/cgi-bin/message?t=message/list&amp;count=20&amp;day=7&amp;token=1707207416&amp;lang=zh_CN">消息管理</a></dd><dd class="menu_item " id="menu_contact"><a href="/cgi-bin/contactmanage?t=user/index&amp;pagesize=10&amp;pageidx=0&amp;type=0&amp;token=1707207416&amp;lang=zh_CN">用户管理</a></dd><dd class="menu_item  no_extra  selected " id="menu_material"><a href="/cgi-bin/appmsg?begin=0&amp;count=10&amp;t=media/appmsg_list&amp;type=10&amp;action=list&amp;token=1707207416&amp;lang=zh_CN">素材管理</a></dd></dl><dl class="menu  closed" id="menu_service"><dt class="menu_title"><i class="icon_menu service"></i><i class="icon_menu_switch"></i>服务<i class="icon_common new"></i></dt><dd class="menu_item " id="menu_shop"><a href="/merchant/store?action=index&amp;t=service/index&amp;token=1707207416&amp;lang=zh_CN">服务中心</a></dd><dd class="menu_item " id="menu_myservice"><a href="/merchant/myservice?action=index&amp;t=service/my_service&amp;token=1707207416&amp;lang=zh_CN">我的服务</a></dd></dl><dl class="menu  closed" id="menu_statistics"><dt class="menu_title"><i class="icon_menu statistics"></i><i class="icon_menu_switch"></i>统计</dt><dd class="menu_item " id="menu_user"><a href="/misc/pluginloginpage?action=stat_user_summary&amp;pluginid=luopan&amp;t=statistics/index&amp;token=1707207416&amp;lang=zh_CN">用户分析</a></dd><dd class="menu_item " id="menu_appmsg"><a href="/misc/pluginloginpage?action=stat_article_detail&amp;pluginid=luopan&amp;t=statistics/index&amp;token=1707207416&amp;lang=zh_CN">图文分析</a></dd><dd class="menu_item " id="menu_message"><a href="/misc/pluginloginpage?action=stat_message&amp;pluginid=luopan&amp;t=statistics/index&amp;token=1707207416&amp;lang=zh_CN">消息分析</a></dd></dl><dl class="menu extra closed" id="menu_setting"><dt class="menu_title"><i class="icon_menu setting"></i><i class="icon_menu_switch"></i>设置</dt><dd class="menu_item " id="menu_account"><a href="/cgi-bin/settingpage?t=setting/index&amp;action=index&amp;token=1707207416&amp;lang=zh_CN">帐号信息</a></dd><dd class="menu_item " id="menu_assistant"><a href="/misc/safeassistant?action=view&amp;t=setting/safe-mphelper&amp;token=1707207416&amp;lang=zh_CN">公众号安全助手</a></dd><dd class="menu_item " id="menu_safe"><a href="/cgi-bin/safecenterstatus?action=view&amp;t=setting/safe-index&amp;token=1707207416&amp;lang=zh_CN">安全中心</a></dd></dl></div>
+<script type="text/javascript">
+    function _report(type, msg){
+        var _img = new Image(1, 1);
+        _img.src = "/misc/jslog?1=1"
+            + "&amp;content=" + encodeURIComponent(msg)
+            + "&amp;id=" + type
+            + "&amp;level=error";
+    }
+	(function(){
+        try{
+            var cookies = {};
+
+            cookies.stringify = function(obj){
+                var res = [];
+                for (var key in obj){
+                    res.push(key + "=" + obj[key]);
+                }
+                return res.join(",");
+            };
+            cookies.parse = function(str){
+                var 
+                    arr = str.split('|'),
+                    obj = {};
+
+                for (var i = 0; i &lt; arr.length; ++i){
+                    var 
+                        val = arr[i],
+                        kv = val.split(":"),
+                        k = kv[0],
+                        v = kv[1].split(",");
+                    obj[k] = obj[k] || {};
+                    for (var j = 0; j &lt; v.length; ++j){
+                        var tmp = v[j].split("=");
+                        obj[k][tmp[0]] = tmp[1];
+                    }
+                        
+                }
+                return obj;
+            };
+            cookies.set = function (key, value, days, param){
+                days = days || 30;
+                var exp  = new Date(); 
+
+                exp.setTime(exp.getTime() + days*24*60*60*1000);
+                if (!!param){
+                    var res = [];
+                    $.each(param, function(key, value){
+                        res.push(";" + key + "=" + value);
+                    });
+                    param = res.join("");
+                }else{
+                    param = "";    
+                }
+                
+                if (!!exp){
+                    document.cookie = key + "="+ encodeURIComponent(value||"") + ";expires=" + exp.toGMTString() + param;
+                }
+            };
+
+            cookies.get = function(_asName) {
+                var _oRegExp = (new RegExp(["(^|;|\\s+)" , (_asName).replace(/([\^\.\[\$\(\)\|\*\+\?\{\\])/ig, "\\$1"), "=([^;]*);?"].join("")));
+
+                if(_oRegExp.test(document.cookie))
+                {
+                    //某些畸形浏览器，decode可能会出错
+                    try {
+                        return decodeURIComponent(RegExp["$2"]);
+                    }
+                    catch(e) {
+                        return RegExp["$2"];
+                    }
+                }
+            };
+
+            window.Cookies = cookies;
+        }catch(e){
+            _report(3, '[fakeid=2392020057] [script] [url=' + location.href + '] [useragent=' + window.navigator.userAgent + '] [src=cookie error] [exception=' + e + ']');
+        }
+	})();
+
+	(function(){
+        try{
+    		var menuData = {
+    			"function" : {
+    				"name" : '功能',
+    				"sub" : {
+    					"masssend" : {name:"群发功能", url:["/cgi-bin/masssendpage?t=mass/send", "/cgi-bin/frame?t=mass/statement_frame"]},
+                        "tmplmsg" : {name:"模板消息", url:"/advanced/tmplmsg?action=list&amp;t=tmplmsg/list"},
+    					"advanced" : {name:"高级功能", url:"/advanced/advanced?action=index&amp;t=advanced/index"},
+    				"business" : {name:"商户功能", url:["/cgi-bin/frame?t=business/index_frame&amp;iframe=%2Fpaymch%2Fbusiness%3Ft%3Dbusiness%2Finfo%26action%3Doverview&amp;nav=business&amp;hide=0", "/cgi-bin/frame?t=business/index_frame&amp;iframe=%2Fpaymch%2Fbusiness%3Ft%3Dbusiness%2Findex%26action%3Dindex&amp;nav=shop&amp;hide=0"]},
+    				"devicefunc" : {name:"设备功能", url:"/device/getdeviceinfo?action=modify&amp;t=device/setting"},
+                    "multiservice" : {name:"多客服", url:"/misc/pluginloginpage?t=advanced/verify&amp;action=custom&amp;op=outerlogin&amp;pluginid=duokefu"}
+    				}
+    			},              
+                "store" : {
+                    "name" : '小店',
+                    "sub" : {
+                        "overview" : {name:"小店概况", url:"/merchant/merchantstat?t=shop/overview&amp;action=getoverview"},
+                        "addgoods" : {name:"添加商品", url:"/merchant/goods?type=11&amp;t=shop/precreate", openew:true},
+                        "goods" : {name:"商品管理", url:"/merchant/goodsgroup?t=shop/category&amp;type=1"},
+                        "shelf" : {name:"货架管理", url:"/merchant/shelf?status=0&amp;action=get_shelflist&amp;t=shop/myshelf&amp;offset=0&amp;count=5"},
+                        "productorder" : {name:"订单管理", url:"/merchant/productorder?action=getlist&amp;t=shop/order_list&amp;last_days=30&amp;count=10&amp;offset=0"},
+                        "delivery" : {name:"运费模板", url:"/merchant/delivery?action=getlist&amp;t=shop/delivery_list"},                        
+                        "imagebase" : {name:"图片库", url:"/merchant/goodsimage?action=getimage&amp;t=shop/shop_img&amp;count=20&amp;offset=0"}
+                    },
+                    "isNew":true
+                },
+    			"manage" : {
+    				"name" : '管理',
+    				"sub" : {
+    					"message" : {name:"消息管理", url:"/cgi-bin/message?t=message/list&amp;count=20&amp;day=7"},
+    					"contact" : {name:"用户管理", url:"/cgi-bin/contactmanage?t=user/index&amp;pagesize=10&amp;pageidx=0&amp;type=0"},
+    					"material" : {name:"素材管理", url:["/cgi-bin/appmsg?begin=0&amp;count=10&amp;t=media/appmsg_list&amp;type=10&amp;action=list",
+    				"/cgi-bin/appmsg?begin=0&amp;count=10&amp;t=media/appmsg_list&amp;type=11&amp;action=list"]}
+    				}
+    			},
+                "advert":{
+                    "name":"推广",
+                    "sub":{
+                        "adclient":{"name":"广告主","url":["/merchant/ad_client_index?t=ad_system/client_index","/merchant/ad_client_report?t=ad_system/client_report&amp;action=list"]},
+                        "adhost":{"name":"流量主","url":["/merchant/ad_host_index?t=ad_system/host_index","/merchant/ad_host_report?t=ad_system/host_report"]}
+                    }
+                },
+    			"service" : {
+    				"name" : '服务',
+    				"sub" : {
+    					"shop" : {name:"服务中心", url:"/merchant/store?action=index&amp;t=service/index"},
+                        "order" : {name:"我的订单", url:"/merchant/order?action=index&amp;t=service/order"},
+    					"myservice" : {name:"我的服务", url:"/merchant/myservice?action=index&amp;t=service/my_service"}
+    				},
+                    "isNew":true
+    			},
+    			"statistics" : {
+    				"name" : '统计',
+    				"sub" : {
+    					"user" : {name:"用户分析", url:"/misc/pluginloginpage?action=stat_user_summary&amp;pluginid=luopan&amp;t=statistics/index"},
+    					"appmsg" : {name:"图文分析", url:"/misc/pluginloginpage?action=stat_article_detail&amp;pluginid=luopan&amp;t=statistics/index"},
+    					"message" : {name:"消息分析", url:"/misc/pluginloginpage?action=stat_message&amp;pluginid=luopan&amp;t=statistics/index"},
+    					"interface" : {name:"接口分析", url:"/misc/pluginloginpage?action=stat_interface&amp;pluginid=luopan&amp;t=statistics/index"}
+    				}
+    			}, 
+    			"setting" : {
+    				"name" : '设置',
+    				"sub" : {
+    					"account" : {name:"帐号信息", url:"/cgi-bin/settingpage?t=setting/index&amp;action=index"},
+    					"assistant" : {name:"公众号安全助手", url:"/misc/safeassistant?action=view&amp;t=setting/safe-mphelper"},
+    					"development" : {name:"开发配置", url:"development?t=setting/dev"},
+    					"safe" : {name:"安全中心", url:"/cgi-bin/safecenterstatus?action=view&amp;t=setting/safe-index"}
+    				}
+    			}
+    		};
+
+            var menuJson = {}, uin = "2392020057";
+    		            var primary_nav = "function";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["masssend"] = {primary:"function", selected:""==="1", nav_flag:1};
+                        var primary_nav = "function";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["tmplmsg"] = {primary:"function", selected:""==="1", nav_flag:0};
+                        var primary_nav = "function";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["advanced"] = {primary:"function", selected:""==="1", nav_flag:1};
+                        var primary_nav = "function";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["business"] = {primary:"function", selected:""==="1", nav_flag:0};
+                        var primary_nav = "function";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["devicefunc"] = {primary:"function", selected:""==="1", nav_flag:0};
+                        var primary_nav = "function";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["multiservice"] = {primary:"function", selected:""==="1", nav_flag:0};
+                        var primary_nav = "manage";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["message"] = {primary:"manage", selected:""==="1", nav_flag:1};
+                        var primary_nav = "manage";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["contact"] = {primary:"manage", selected:""==="1", nav_flag:1};
+                        var primary_nav = "manage";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["material"] = {primary:"manage", selected:"1"==="1", nav_flag:1};
+                        var primary_nav = "service";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["shop"] = {primary:"service", selected:""==="1", nav_flag:1};
+                        var primary_nav = "service";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["myservice"] = {primary:"service", selected:""==="1", nav_flag:1};
+                        var primary_nav = "statistics";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["user"] = {primary:"statistics", selected:""==="1", nav_flag:1};
+                        var primary_nav = "statistics";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["appmsg"] = {primary:"statistics", selected:""==="1", nav_flag:1};
+                        var primary_nav = "statistics";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["message"] = {primary:"statistics", selected:""==="1", nav_flag:1};
+                        var primary_nav = "statistics";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["interface"] = {primary:"statistics", selected:""==="1", nav_flag:0};
+                        var primary_nav = "advert";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["adclient"] = {primary:"advert", selected:""==="1", nav_flag:0};
+                        var primary_nav = "advert";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["adhost"] = {primary:"advert", selected:""==="1", nav_flag:0};
+                        var primary_nav = "setting";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["account"] = {primary:"setting", selected:""==="1", nav_flag:1};
+                        var primary_nav = "setting";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["assistant"] = {primary:"setting", selected:""==="1", nav_flag:1};
+                        var primary_nav = "setting";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["safe"] = {primary:"setting", selected:""==="1", nav_flag:1};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["overview"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["addgoods"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["goods"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["group"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["shelf"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["imagebase"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["productorder"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["rights"] = {primary:"store", selected:""==="1", nav_flag:0};
+                        var primary_nav = "store";
+            menuJson[primary_nav] = menuJson[primary_nav] || {};
+            menuJson[primary_nav]["delivery"] = {primary:"store", selected:""==="1", nav_flag:0};
+            ;
+
+            function getObjLength(obj){
+                var c = 0;
+                for (var j in obj){c++;}
+                return c;
+            }
+            function formatMenuData(menuJson, menuData){
+                var 
+                    status = window.Cookies.get("menu_new_status");
+
+                status = !status ? {} : Cookies.parse(status);
+                status = status[uin] || {};
+
+                for (var primary_id in menuJson){
+                    var menuSubJson = menuJson[primary_id];
+                    for (var nav_id in menuSubJson){
+                        var item = menuSubJson[nav_id];
+                        if (!!item.primary){
+                            var 
+                                primary = item.primary,
+                                menu = menuData[primary];
+                                //sub = menu.sub[nav_id];
+                                //@yinshen 加强判断，兼容不一致数据
+                                if(menu&amp;&amp;menu.sub){
+                                    sub = menu.sub[nav_id];
+                                }else{
+                                    continue;
+                                }
+
+                            if (!!status[primary]){
+                                menu.isOpen = true;
+                            }
+                            if (!!sub &amp;&amp; item.nav_flag &gt; 0){
+                                sub.isShow = true;
+                                sub.isSelected = item.selected;
+                                if(sub.url){
+                                    sub.url = ([].concat(sub.url))[item.nav_flag-1] + '&amp;token=1707207416&amp;lang=zh_CN';
+                                }else{
+                                    sub.url ="javascript:;";
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return menuData;
+            }
+
+            function render(data){
+                var 
+                    d_len = getObjLength(data),
+                    d_c = 0,
+                    html = [];
+
+                for (var key in data){
+                    var 
+                        menu = data[key],
+                        sub = menu.sub,
+                        sub_html = [],
+                        c = 0,
+                        len = getObjLength(sub),
+                        isSelected = false;
+
+                    for (var j in sub){
+                        var item = sub[j];
+                        if (item.isShow){
+                            c++;
+                            isSelected = isSelected || item.isSelected;
+                            sub_html.push(['&lt;dd id="menu_', j, '" class="menu_item ', (c==len?" no_extra ":""), (item.isSelected?" selected ":""), '"&gt;&lt;a href="', item.url, '"', (item.openew ? ' target="_blank"' : ''), '&gt;', item.name, "&lt;/a&gt;&lt;/dd&gt;"].join(""));
+                        } 
+                    }
+                    if (c &gt; 0){
+                        d_c++;
+                        html.push([
+                            '&lt;dl id="menu_', key, '" class="menu ', (d_c==1?" no_extra ": (d_c==d_len?"extra":"")), (isSelected?" selected ":""), ' ', (isSelected || menu.isOpen?"":"closed"), '"&gt;',
+                            '&lt;dt class="menu_title"&gt;&lt;i class="icon_menu ', key, '"&gt;&lt;/i&gt;&lt;i class="icon_menu_switch"&gt;&lt;/i&gt;', menu.name,menu.isNew?'&lt;i class="icon_common new"&gt;&lt;/i&gt;':"", '&lt;/dt&gt;', 
+                            sub_html.join(''),
+                            '&lt;/dl&gt;'
+                        ].join(""));
+                    }else{
+                        d_len--;
+                    }
+                }
+                document.getElementById('menuBar').innerHTML = html.join('');
+            }
+
+            render(formatMenuData(menuJson, menuData));
+        }catch(e){
+            console.log(e);
+            _report(3, '[fakeid=2392020057] [script] [url=' + location.href + '] [useragent=' + window.navigator.userAgent + '] [src=menu error] [exception=' + e + ']');
+        }
+	})();
+</script>
+
+                </div>
+                                
+                <div class="col_main">
+                    
+<div class="main_hd">
+    <div id="topTab" class="title_tab"><ul class="tab_navs mt title_tab">
+    
+    
+    
+    
+    <li data-id="media10" class="tab_nav js_top  selected"><a href="/cgi-bin/appmsg?begin=0&amp;count=10&amp;t=media/appmsg_list&amp;type=10&amp;action=list&amp;token=1707207416&amp;lang=zh_CN">图文消息</a></li>
+    
+    
+    
+    <li data-id="media2" class="tab_nav js_top "><a href="/cgi-bin/filepage?type=2&amp;begin=0&amp;count=10&amp;t=media/list&amp;token=1707207416&amp;lang=zh_CN">图片</a></li>
+    
+    
+    
+    <li data-id="media3" class="tab_nav js_top "><a href="/cgi-bin/filepage?type=3&amp;begin=0&amp;count=10&amp;t=media/list&amp;token=1707207416&amp;lang=zh_CN">语音</a></li>
+    
+    
+    
+    <li data-id="media15" class="tab_nav js_top "><a href="/cgi-bin/appmsg?begin=0&amp;count=10&amp;t=media/appmsg_list&amp;type=15&amp;action=list&amp;token=1707207416&amp;lang=zh_CN">视频</a></li>
+    
+    
+</ul>
+</div>
+</div>
+<div class="main_bd">
+    <div class="media_preview_area">
+        <div class="appmsg  editing">
+            <div class="appmsg_content" id="js_appmsg_preview">
+                                            <div class="js_appmsg_item " data-id="1" data-fileid="" id="appmsgItem1">
+    
+        <h4 class="appmsg_title"><a target="_blank" href="javascript:void(0);" onclick="return false;">test automation</a></h4>
+        <div class="appmsg_info">
+            <em class="appmsg_date"></em>
+        </div>
+        <div class="appmsg_thumb_wrp">
+            <img src="" class="js_appmsg_thumb appmsg_thumb" />
+            <i class="appmsg_thumb default">封面图片</i>
+        </div>
+        <p class="appmsg_desc"></p>
+    
+</div></div>
+                    </div>
+    </div>
+    <div class="media_edit_area">
+        <div id="js_appmsg_editor"><div class="appmsg_editor" style="margin-top: 0px;">
+	<div class="inner">
+		<div class="appmsg_edit_item">
+			<label class="frm_label" for="">标题</label>
+			<span class="frm_input_box"><input type="text" class="frm_input js_title" /></span>
+		</div>
+		<div class="appmsg_edit_item">
+			<label class="frm_label" for="">
+				<strong class="title">作者</strong>
+				<p class="tips l">（选填）</p>
+			</label>
+			<span class="frm_input_box"><input type="text" class="frm_input js_author " /></span>
+		</div>
+		<div class="appmsg_edit_item">
+			<label class="frm_label" for="">
+				<strong class="title">封面</strong>
+				<p class="js_cover_tip tips r">大图片建议尺寸：360像素 * 200像素</p>
+			</label>
+			<div class="frm_input_box">
+                <div class="upload_box">
+                    <div class="upload_area">
+                        <a class="upload_access" onclick="return false;" href="javascript:void(0);" id="js_appmsg_upload_cover" width="50" height="22">
+                            <i class="icon18_common upload_gray"></i>
+                            上传                        </a>
+                    <ul class="upload_file_box" style="display: none;"></ul><object width="100%" height="100%" type="application/x-shockwave-flash" data="https://res.wx.qq.com/mpres/zh_CN/htmledition/plprecorder/biz_web/uploadify1d7f8c.swf" id="js_appmsg_upload_coverUploader"><param name="quality" value="high" /><param name="wmode" value="opaque" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="uploadifyID=js_appmsg_upload_cover&amp;pagepath=/cgi-bin/&amp;script=https%3A%2F%2Fmp.weixin.qq.com%2Fcgi-bin%2Ffiletransfer%3Faction%3Dupload_material%26f%3Djson%26ticket_id%3Dinnolauncher%26ticket%3D79e65ef6cbff606c46d78f5d704b2259ae1b5790%26token%3D1707207416%26lang%3Dzh_CN&amp;folder=uploads&amp;width=50&amp;height=22&amp;wmode=opaque&amp;method=POST&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;hideButton=true&amp;auto=true&amp;fileDataName=file&amp;queueID=fileQueue" /></object></div>
+                </div> 
+                <p class="js_cover upload_preview" style="display: none;">
+					<a onclick="return false;" href="javascript:void(0);" class="js_removeCover">删除</a>
+                </p>
+			</div>
+            <p class="frm_tips">
+                <label class="frm_checkbox_label js_show_cover_pic selected" for="">
+                    <i class="icon_checkbox"></i>
+                    <input type="checkbox" checked="checked" class="frm_checkbox" />
+                   封面图片显示在正文中 
+                </label>
+            </p>
+		</div>
+        
+		<p><a onclick="return false;" href="javascript:void(0);" class="js_addDesc">添加摘要</a></p>
+		<div class="js_desc_area dn appmsg_edit_item" style="display: none;">
+			<label class="frm_label" for="">摘要</label>
+			<span class="frm_textarea_box"><textarea class="js_desc frm_textarea"></textarea></span>
+		</div>
+		<div class="appmsg_edit_item content_edit" id="js_ueditor">
+            <a onclick="return false;" class="icon16_common close jsClose" href="javascript:void(0);">关闭</a>
+            <label class="frm_label" for="">
+                <strong class="title">正文</strong>
+                <p class="tips r">
+                    <em id="js_auto_tips"></em> 
+                	<a onclick="return false;" href="javascript:void(0);" style="display:none;" id="js_cancle">取消</a>
+                </p>
+            </label>
+			<div class="edui_editor_wrp edui-default" id="js_editor">
+				
+			<div class="edui-editor  edui-default" id="edui1" style="z-index: 999;"><div class="edui-editor-toolbarbox edui-default" id="edui1_toolbarbox"><div class="edui-editor-toolbarboxouter edui-default" id="edui1_toolbarboxouter"><div class="edui-editor-toolbarboxinner edui-default"><div onmousedown='return $EDITORUI["edui2"]._onMouseDown(event, this);' onselectstart="return false;" class="edui-toolbar   edui-default" id="edui2" style="-moz-user-select: none;"><div class="edui-box edui-button edui-for-bold edui-default" id="edui3"><div onmouseout='$EDITORUI["edui3"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui3"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui3"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui3"].Stateful_onMouseDown(event, this);' id="edui3_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui3"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="加粗" unselectable="on" id="edui3_body"><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div class="edui-box edui-button edui-for-italic edui-default" id="edui4"><div onmouseout='$EDITORUI["edui4"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui4"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui4"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui4"].Stateful_onMouseDown(event, this);' id="edui4_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui4"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="斜体" unselectable="on" id="edui4_body"><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div class="edui-box edui-button edui-for-underline edui-default" id="edui5"><div onmouseout='$EDITORUI["edui5"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui5"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui5"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui5"].Stateful_onMouseDown(event, this);' id="edui5_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui5"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="下划线" unselectable="on" id="edui5_body"><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div class="edui-box edui-separator  edui-default" id="edui6"></div><div class="edui-box edui-menubutton edui-for-insertorderedlist edui-default" id="edui7"><div onmouseout='$EDITORUI["edui7"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui7"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui7"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui7"].Stateful_onMouseDown(event, this);' id="edui7_state" title="有序列表" class=" edui-default"><div class="edui-menubutton-body edui-default"><div onclick='$EDITORUI["edui7"]._onButtonClick(event, this);' class="edui-box edui-button-body edui-default" id="edui7_button_body"><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div onclick='$EDITORUI["edui7"]._onArrowClick();' class="edui-box edui-arrow edui-default"></div></div></div></div><div class="edui-box edui-menubutton edui-for-insertunorderedlist edui-default" id="edui14"><div onmouseout='$EDITORUI["edui14"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui14"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui14"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui14"].Stateful_onMouseDown(event, this);' id="edui14_state" title="无序列表" class=" edui-default"><div class="edui-menubutton-body edui-default"><div onclick='$EDITORUI["edui14"]._onButtonClick(event, this);' class="edui-box edui-button-body edui-default" id="edui14_button_body"><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div onclick='$EDITORUI["edui14"]._onArrowClick();' class="edui-box edui-arrow edui-default"></div></div></div></div><div class="edui-box edui-separator  edui-default" id="edui19"></div><div class="edui-box edui-button edui-for-insertimage edui-default" id="edui26"><div onmouseout='$EDITORUI["edui26"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui26"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui26"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui26"].Stateful_onMouseDown(event, this);' id="edui26_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui26"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="图片" unselectable="on" id="edui26_body"><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div class="edui-box edui-separator  edui-default" id="edui27"></div><div class="edui-box edui-button edui-for-removeformat edui-default" id="edui28"><div onmouseout='$EDITORUI["edui28"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui28"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui28"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui28"].Stateful_onMouseDown(event, this);' id="edui28_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui28"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="清除格式" unselectable="on" id="edui28_body"><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div class="edui-box edui-splitbutton edui-for-forecolor edui-default edui-colorbutton" id="edui29"><div onmouseout='$EDITORUI["edui29"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui29"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui29"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui29"].Stateful_onMouseDown(event, this);' id="edui29_state" title="字体颜色" class=" edui-default"><div class="edui-splitbutton-body edui-default"><div onclick='$EDITORUI["edui29"]._onButtonClick(event, this);' class="edui-box edui-button-body edui-default" id="edui29_button_body"><div class="edui-box edui-icon edui-default"></div><div class="edui-colorlump" id="edui29_colorlump"></div></div><div class="edui-box edui-splitborder edui-default"></div><div onclick='$EDITORUI["edui29"]._onArrowClick();' class="edui-box edui-arrow edui-default"></div></div></div></div><div class="edui-box edui-splitbutton edui-for-backcolor edui-default edui-colorbutton" id="edui32"><div onmouseout='$EDITORUI["edui32"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui32"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui32"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui32"].Stateful_onMouseDown(event, this);' id="edui32_state" title="背景色" class=" edui-default"><div class="edui-splitbutton-body edui-default"><div onclick='$EDITORUI["edui32"]._onButtonClick(event, this);' class="edui-box edui-button-body edui-default" id="edui32_button_body"><div class="edui-box edui-icon edui-default"></div><div class="edui-colorlump" id="edui32_colorlump"></div></div><div class="edui-box edui-splitborder edui-default"></div><div onclick='$EDITORUI["edui32"]._onArrowClick();' class="edui-box edui-arrow edui-default"></div></div></div></div><div class="edui-box edui-button edui-for-insertvideo edui-default" id="edui39"><div onmouseout='$EDITORUI["edui39"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui39"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui39"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui39"].Stateful_onMouseDown(event, this);' id="edui39_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui39"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="视频" unselectable="on" id="edui39_body"><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div class="edui-box edui-button edui-for-insertvote edui-default" id="edui40"><div onmouseout='$EDITORUI["edui40"].Stateful_onMouseOut(event, this);' onmouseover='$EDITORUI["edui40"].Stateful_onMouseOver(event, this);' onmouseup='$EDITORUI["edui40"].Stateful_onMouseUp(event, this);' onmousedown='$EDITORUI["edui40"].Stateful_onMouseDown(event, this);' id="edui40_state" class=" edui-default"><div class="edui-button-wrap edui-default"><div onclick='return $EDITORUI["edui40"]._onClick();' onmousedown="return false;" class="edui-button-body edui-default" title="投票" unselectable="on" id="edui40_body"><div class="edui-box edui-icon edui-default"></div></div></div></div></div><a class="zoomout_edit_tips" onclick="return false;" href="javascript:void(0);" id="js_zoomout">放大</a><a class="zoomin_edit_tips" onclick="return false;" href="javascript:void(0);" id="js_zoomin">缩小编辑</a></div></div></div><div style="display:none;" class="edui-editor-toolbarmsg edui-default" id="edui1_toolbarmsg"><div onclick='$EDITORUI["edui1"].showWordImageDialog();' class="edui-editor-toolbarmsg-upload edui-default" id="edui1_upload_dialog">点击上传</div><div onclick='$EDITORUI["edui1"].hideToolbarMsg();' class="edui-editor-toolbarmsg-close edui-default">x</div><div class="edui-editor-toolbarmsg-label edui-default" id="edui1_toolbarmsg_label"></div><div style="height:0;overflow:hidden;clear:both;" class=" edui-default"></div></div></div><div class="edui-editor-iframeholder edui-default" id="edui1_iframeholder" style="overflow: hidden; height: 320px;"><iframe width="100%" height="100%" frameborder="0" id="ueditor_0" src="javascript:void(function(){document.open();document.domain=&quot;qq.com&quot;;document.write(&quot;<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml' class='view' ><head><style type='text/css'>.view{padding:0;word-wrap:break-word;cursor:text;height:90%;}
+body{margin:8px;font-family:sans-serif;font-size:16px;}p{margin:5px 0;}</style><link rel='stylesheet' type='text/css' href='/mpres/htmledition/ueditor/themes/iframe.css'/></head><body class='view' ></body><script type='text/javascript'  id='_initialScript'>setTimeout(function(){window.parent.UE.instants['ueditorInstant0']._setup(document);},0);var _tmpScript = document.getElementById('_initialScript');_tmpScript.parentNode.removeChild(_tmpScript);</script></html>&quot;);document.close();}())"></iframe></div><div class="edui-editor-bottomContainer edui-default" id="edui1_bottombar"><table class=" edui-default"><tbody class=" edui-default"><tr class=" edui-default"><td class="edui-editor-bottombar edui-default" id="edui1_elementpath" style="display: none;"></td><td class="edui-editor-wordcount edui-default" id="edui1_wordcount" style="display: none;"></td><td class="edui-editor-scale edui-default" id="edui1_scale" style="display: none;"><div class="edui-editor-icon edui-default"></div></td></tr></tbody></table></div><div id="edui1_scalelayer" class=" edui-default"></div></div></div>
+            <div class="tool_bar tc">
+                <a class="btn btn_primary" href="javascript:void(0);" onclick="return false;" id="js_finish_zoom">完成编辑</a>
+            </div>
+        </div>
+		<p><a onclick="return false;" href="javascript:void(0);" class="js_addURL">添加原文链接</a></p>
+		<div class="js_url_area dn appmsg_edit_item" style="display: none;">
+			<label class="frm_label" for="">原文链接</label>
+			<span class="frm_input_box"><input type="text" class="js_url frm_input" /></span>
+		</div>
+        
+	</div>
+	<i class="arrow arrow_out" style="margin-top: 0px;"></i>
+	<i class="arrow arrow_in" style="margin-top: 0px;"></i>
+<div class="mask" style="display: none;"><div style="position: relative; left: 630px; top: 310px;"><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -1s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(0deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.916667s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(30deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.833333s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(60deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.75s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(90deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.666667s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(120deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.583333s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(150deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.5s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(180deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.416667s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(210deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.333333s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(240deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.25s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(270deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.166667s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(300deg) translate(10px, 0px); border-radius: 100em;"></div></div><div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); animation: 1s linear -0.0833333s normal none infinite opacity-100-25;"><div style="position: absolute; width: 12px; height: 5px; background: none repeat scroll 0% 0% rgb(34, 34, 34); box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); transform-origin: left center 0px; transform: rotate(330deg) translate(10px, 0px); border-radius: 100em;"></div></div></div></div></div>
+</div>
+        <p class="editor_extra_info">
+            <a class="page_assist_link" href="/cgi-bin/settingpage?t=setting/index&amp;action=index&amp;set_water=1&amp;lang=zh_CN&amp;token=1707207416" target="_blank">如何修改图片水印？</a>
+        </p>
+    </div>
+    <div class="tool_area">
+        <div class="tool_bar border tc">
+            <span class="btn btn_input btn_default" id="js_preview"><button>预览</button></span>
+            <span class="btn btn_input btn_primary" id="js_submit"><button>保存</button></span>
+        </div>
+    </div>
+</div>
+
+
+
+
+                </div>
+            </div>
+                        <div class="faq">
+                <ul class="links">
+                                        <li class="links_item no_extra"><a target="_blank" href="http://crm2.qq.com/page/portalpage/wpa.php?uin=40012345&amp;f=1&amp;ty=1&amp;ap=000011:400792:%7Cm:12%7Cf:400792:m:12">在线客服</a></li>
+                    <li class="links_item"><a target="_blank" href="http://kf.qq.com/product/weixinmp.html">客服中心</a></li>
+                </ul>
+                <p class="tail">反馈官号：weixingongzhong</p>
+            </div>
+                    </div>
+        <div id="footer" class="foot">
+	<ul class="links ft">
+					<li class="links_item no_extra"><a target="_blank" href="http://www.tencent.com/zh-cn/index.shtml">关于腾讯</a></li>
+			<li class="links_item"><a target="_blank" href="/cgi-bin/readtemplate?t=home/agreement_tmpl&amp;type=info&amp;lang=zh_CN&amp;token=1707207416">服务协议</a></li>
+			<li class="links_item"><a target="_blank" href="/cgi-bin/readtemplate?t=business/faq_operation_tmpl&amp;type=info&amp;lang=zh_CN&amp;token=1707207416">运营规范</a></li>
+			<li class="links_item"><a target="_blank" href="http://kf.qq.com/product/weixinmp.html">客服中心</a></li>
+			<li class="links_item"><a target="_blank" href="http://crm2.qq.com/page/portalpage/wpa.php?uin=40012345&amp;f=1&amp;ty=1&amp;ap=000011:400792:%7Cm:12%7Cf:400792:m:12">在线客服</a></li>
+			<li class="links_item"><a target="_blank" href="mailto:weixinmp@qq.com">联系邮箱</a></li>
+			<li class="links_item"><a target="_blank" href="/cgi-bin/readtemplate?t=home/infringement_tmpl&amp;lang=zh_CN">侵权投诉</a></li>
+
+				<li class="links_item"><p class="copyright">Copyright © 2012-2014 Tencent. All Rights Reserved.</p> </li>
+	</ul>
+    
+	
+</div>
+
+        <script>
+            mp.time.domLoaded = (+new Date());
+        </script>
+        <script type="text/javascript">var MODULES = {'setting/temp/meeting-account.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/temp/meeting-account1e6be4.js','common/wx/Cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/Cgi1e6be4.js','common/wx/Tips.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/Tips1e6be4.js','.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/.js','setting/temp/bind-account.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/temp/bind-account1e6be4.js','setting/tpl/postedit.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/tpl/postedit.html1e6be4.js','setting/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/index1e6be4.js','common/lib/jquery.Jcrop.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/lib/jquery.Jcrop1e6be4.js','common/wx/popup.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/popup1e6be4.js','biz_web/ui/checkbox.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/ui/checkbox1e6be4.js','common/wx/dialog.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/dialog1e71a5.js','common/qq/queryString.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/queryString1e6be4.js','common/wx/Step.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/Step1e6be4.js','common/wx/upload.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/upload1e6be4.js','setting/map_setting.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/map_setting1e6be4.js','biz_web/lib/json.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/json1e6be4.js','biz_common/jquery.validate.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/jquery.validate1e6be4.js','biz_web/ui/dropdown.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/ui/dropdown1e6be4.js','setting/multi_citydata.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/multi_citydata1e6be4.js','common/wx/pagebar.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/pagebar1e6be4.js','setting/mphelper.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/mphelper1e6be4.js','common/wx/top.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/top1e6be4.js','setting/wxverifycode.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/wxverifycode1e6be4.js','setting/upgrade-notes.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/upgrade-notes1e6be4.js','setting/safehelper.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/safehelper1e7c39.js','safe/Scan.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/Scan1e7c39.js','safe/safe_check.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/safe_check1e97b7.js','safe/safe_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/safe_cgi1e7c39.js','setting/dev.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/dev1e6be4.js','common/wx/verifycode.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/verifycode1e6be4.js','setting/multi_search.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/multi_search1e6be4.js','tpl/setting/multi_search_result.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/setting/multi_search_result.html1e6be4.js','setting/markerTool.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/markerTool1e6be4.js','setting/SearchResultPanel.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/SearchResultPanel1e6be4.js','setting/MyMarker.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/MyMarker1e6be4.js','setting/CitySelectComponent.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/CitySelectComponent1e6be4.js','setting/multi_city_select.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/multi_city_select1e6be4.js','setting/bind-email-status.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/bind-email-status1e6be4.js','setting/multi_location.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/multi_location1e6be4.js','setting/multi_map.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/multi_map1e6be4.js','setting/multiMarker.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/multiMarker1e6be4.js','setting/citydata.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/citydata1e6be4.js','tpl/setting/multi_infowindow_edit.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/setting/multi_infowindow_edit.html1e6be4.js','tpl/setting/multi_infowindow_check.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/setting/multi_infowindow_check.html1e6be4.js','setting/bind-email.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/bind-email1e6be4.js','biz_common/jquery.md5.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/jquery.md51e6be4.js','setting/set-location.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/set-location1e6be4.js','setting/postedit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/setting/postedit1e6be4.js','user/force_change_pwd.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/user/force_change_pwd1e6be4.js','user/group_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/user/group_cgi1e6be4.js','user/user_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/user/user_cgi1e6be4.js','user/validate_phone.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/user/validate_phone1e6be4.js','user/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/user/index1e6be4.js','common/wx/remark.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/remark1e6be4.js','common/wx/RichBuddy.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/RichBuddy1e6be4.js','common/qq/events.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/events1e6be4.js','common/qq/emoji.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/emoji1e6be4.js','tpl/user/grouplist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/user/grouplist.html1e6be4.js','tpl/user/userlist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/user/userlist.html1e6be4.js','tpl/user/verifylist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/user/verifylist.html1e6be4.js','user/validate_wx.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/user/validate_wx1e7c39.js','register/entreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/entreg1e6be4.js','common/lib/datepicker.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/lib/datepicker1e6be4.js','common/wx/region.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/region1e6be4.js','register/commonreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/commonreg1e6be4.js','register/base_info.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/base_info1e6be4.js','tpl/verifycode.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/verifycode.html1e6be4.js','common/qq/jquery.plugin/serializeObject.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/jquery.plugin/serializeObject1e6be4.js','common/lib/jquery.md5.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/lib/jquery.md5.js','common/qq/prototype.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/prototype1e76b5.js','register/upgrade.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/upgrade1e6be4.js','wxverify/validateExtend.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/validateExtend1e6be4.js','register/step3.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/step31e6be4.js','register/step1_tmpl.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/step1_tmpl1e6be4.js','register/step1.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/step11e6be4.js','register/step2.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/step21e6be4.js','register/govreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/govreg1e6be4.js','register/mediareg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/mediareg1e6be4.js','register/otherreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/otherreg1e6be4.js','register/personreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/personreg1e6be4.js','register/step4.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/step41e6be4.js','register/step5.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/step51e6be4.js','biz_common/moment.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/moment1e6be4.js','register/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/index1e6be4.js','register/refill.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/refill1e6be4.js','register/type_select.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/register/type_select1e6be4.js','notification/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/notification/index1e6be4.js','common/wx/time.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/time1e6be4.js','home/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/home/index1e760a.js','home/login.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/home/login1e6be4.js','biz_common/cookie.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/cookie1e6be4.js','ad_system/promotion/ad_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/promotion/ad_cgi1e6be4.js','ad_system/promotion/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/promotion/list1e774c.js','biz_web/ui/dateRange.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/ui/dateRange1e71f4.js','common/wx/hourspan.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/hourspan1e6be4.js','common/wx/dropdowns.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/dropdowns1e6be4.js','common/wx/multiSelector/data/city.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/multiSelector/data/city1e6be4.js','ad_system/promotion/ad_timeset.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/promotion/ad_timeset1e6be4.js','common/wx/tooltips.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/tooltips1e6be4.js','common/qq/mask.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/mask1e6be4.js','ad_system/promotion/edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/promotion/edit1e71a5.js','material/materialDialog.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/material/materialDialog1e71a5.js','biz_web/ui/input/lentips.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/ui/input/lentips1e6be4.js','common/wx/multiSelector/city.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/multiSelector/city1e6be4.js','common/wx/multiSelector/industry.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/multiSelector/industry1e6be4.js','common/wx/slider.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/slider1e6be4.js','common/qq/url.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/url1e6be4.js','ad_system/host_manage.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/host_manage1e6be4.js','ad_system/host_pay.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/host_pay1e774c.js','ad_system/client_pay.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/client_pay1e71f4.js','ad_system/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/index1e6be4.js','ad_system/host_report.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/host_report1e7ae6.js','biz_web/lib/highcharts.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/highcharts1e6be4.js','ad_system/client_report.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/client_report1e7ae6.js','ad_system/host.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/host1e6be4.js','ad_system/client.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/client1e6be4.js','ad_system/pop_test.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/pop_test1e6be4.js','ad_system/file.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/file1e6be4.js','ad_system/host_index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/host_index1e75b5.js','ad_system/client_index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ad_system/client_index1e6be4.js','statistics/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/statistics/index1e6be4.js','common/wx/iframe.method.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/iframe.method1e6be4.js','wbverify/step.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wbverify/step1e6be4.js','wbverify/step1.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wbverify/step11e6be4.js','wbverify/step2_tx.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wbverify/step2_tx1e6be4.js','wbverify/step3_tx.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wbverify/step3_tx1e6be4.js','wbverify/step2_sina.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wbverify/step2_sina1e6be4.js','wbverify/step3_sina.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wbverify/step3_sina1e6be4.js','device/setting.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/device/setting1e6be4.js','common/wx/editit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/editit1e6be4.js','news/operation_guide.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/news/operation_guide1e6be4.js','common/wx/anchor.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/anchor1e6be4.js','news/authorization.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/news/authorization1e6be4.js','wxverify/supplement_verify_info.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/supplement_verify_info1e6be4.js','common/wx/stopMultiRequest.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/stopMultiRequest1e6be4.js','wxverify/step1.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/step11e6be4.js','tpl/wxverify/step1.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/step1.html1e6be4.js','wxverify/civilianreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/civilianreg1e6be4.js','wxverify/commonreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/commonreg1e6be4.js','wxverify/step2.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/step21e6be4.js','wxverify/entreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/entreg1e6be4.js','wxverify/mediaentreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/mediaentreg1e6be4.js','wxverify/govreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/govreg1e6be4.js','wxverify/nonprofitreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/nonprofitreg1e6be4.js','wxverify/profitablereg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/profitablereg1e6be4.js','wxverify/shopreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/shopreg1e6be4.js','wxverify/socialreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/socialreg1e6be4.js','wxverify/mediareg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/mediareg1e6be4.js','wxverify/artistreg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/artistreg1e6be4.js','tpl/wxverify/entreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/entreg.html1e6be4.js','tpl/wxverify/mediaentreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/mediaentreg.html1e6be4.js','tpl/wxverify/govreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/govreg.html1e6be4.js','tpl/wxverify/nonprofitreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/nonprofitreg.html1e6be4.js','tpl/wxverify/civilianreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/civilianreg.html1e6be4.js','tpl/wxverify/profitablereg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/profitablereg.html1e6be4.js','tpl/wxverify/shopreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/shopreg.html1e6be4.js','tpl/wxverify/socialreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/socialreg.html1e6be4.js','tpl/wxverify/mediareg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/mediareg.html1e6be4.js','tpl/wxverify/artistreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/artistreg.html1e6be4.js','tpl/wxverify/commonreg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/commonreg.html1e6be4.js','tpl/wxverify/step2.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/step2.html1e6be4.js','biz_web/lib/store.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/store1e6be4.js','biz_common/aes.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/aes1e6be4.js','wxverify/init.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/init1e6be4.js','wxverify/confirmName.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/confirmName1e6be4.js','wxverify/step3.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/step31e6be4.js','tpl/wxverify/step3.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/step3.html1e6be4.js','tpl/wxverify/confirmname.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/confirmname.html1e6be4.js','wxverify/step4.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/step41e6be4.js','tpl/wxverify/ent_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/ent_preview.html1e6be4.js','tpl/wxverify/mediaent_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/mediaent_preview.html1e6be4.js','tpl/wxverify/gov_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/gov_preview.html1e6be4.js','tpl/wxverify/nonprofit_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/nonprofit_preview.html1e6be4.js','tpl/wxverify/civilian_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/civilian_preview.html1e6be4.js','tpl/wxverify/profitable_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/profitable_preview.html1e6be4.js','tpl/wxverify/shop_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/shop_preview.html1e6be4.js','tpl/wxverify/social_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/social_preview.html1e6be4.js','tpl/wxverify/media_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/media_preview.html1e6be4.js','tpl/wxverify/artist_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/artist_preview.html1e6be4.js','tpl/wxverify/common_preview.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/common_preview.html1e6be4.js','tpl/wxverify/increment_tax_form.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/increment_tax_form.html1e6be4.js','tpl/wxverify/step4.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/step4.html1e6be4.js','wxverify/step5.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/step51e9223.js','tpl/wxverify/step5.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/step5.html1e96e4.js','wxverify/detail.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/detail1e6be4.js','wxverify/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/index1e6be4.js','wxverify/refill.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/refill1e6be4.js','wxverify/invoice_edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/wxverify/invoice_edit1e6be4.js','tpl/wxverify/invoice_edit.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/wxverify/invoice_edit.html1e6be4.js','message/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/message/list1e6be4.js','message/message_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/message/message_cgi1e6be4.js','message/renderList.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/message/renderList1e6be4.js','common/wx/simplePopup.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/simplePopup1e6be4.js','common/qq/Class.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/Class1e6be4.js','common/wx/media/img.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/img1e6be4.js','common/wx/media/audio.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/audio1e6be4.js','common/wx/media/video.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/video1e6be4.js','common/wx/media/idCard.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/idCard1e6be4.js','tpl/msgListItem.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/msgListItem.html1e6be4.js','common/wx/media/simpleAppmsg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/simpleAppmsg1e6be4.js','tpl/message/video_popup.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/message/video_popup.html1e6be4.js','common/wx/richEditor/emotionEditor.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/richEditor/emotionEditor1e6be4.js','message/send.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/message/send1e6be4.js','common/wx/richEditor/msgSender.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/richEditor/msgSender1e6be4.js','widget/datepicker.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/datepicker1e6c26.css','common/lib/MockJax.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/lib/MockJax1e6be4.js','common/lib/colorpicker.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/lib/colorpicker1e6be4.js','tpl/colorpicker.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/colorpicker.html1e6be4.js','widget/media.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/media1e6c26.css','tpl/media/img.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/img.html1e6be4.js','biz_web/lib/soundmanager2.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/soundmanager21e6be4.js','tpl/media/audio.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/audio.html1e6be4.js','tpl/media/simple_appmsg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/simple_appmsg.html1e6be4.js','tpl/media/id_card.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/id_card.html1e6be4.js','widget/media/richvideo.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/media/richvideo1e6c5f.css','biz_web/lib/video.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/video1e6be4.js','biz_web/lib/swfobject.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/swfobject1e6be4.js','tpl/media/video.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/video.html1e6be4.js','tpl/media/videomsg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/videomsg.html1e6be4.js','common/wx/media/appmsg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/appmsg1e6be4.js','tpl/media/appmsg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/appmsg.html1e6be4.js','common/wx/media/appmsgDialog.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/appmsgDialog1e6be4.js','widget/msg_list.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/msg_list1e71a5.css','media/media_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/media/media_cgi1e6be4.js','tpl/media/single_appmsg_dialog/layout.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/single_appmsg_dialog/layout.html1e6be4.js','tpl/media/single_appmsg_dialog/item.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/single_appmsg_dialog/item.html1e6be4.js','common/wx/media/factory.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/media/factory1e6be4.js','widget/emotion_editor.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/emotion_editor1e6c26.css','tpl/richEditor/emotionEditor.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/richEditor/emotionEditor.html1e6be4.js','common/wx/richEditor/wysiwyg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/richEditor/wysiwyg1e6be4.js','common/wx/richEditor/emotion.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/richEditor/emotion1e6be4.js','common/wx/richEditor/editorRange.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/richEditor/editorRange1e6be4.js','widget/msg_sender.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/msg_sender1e6be4.css','common/qq/jquery.plugin/tab.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/jquery.plugin/tab1e6be4.js','media/media_dialog.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/media/media_dialog1e6be4.js','tpl/richEditor/emotion.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/richEditor/emotion.html1e6be4.js','common/wx/multiSelector.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/multiSelector1e6be4.js','common/wx/multiSelector/shop_city.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/multiSelector/shop_city1e6be4.js','biz_common/jquery.ui/jquery.ui.draggable.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/jquery.ui/jquery.ui.draggable1e6be4.js','tpl/dialog.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/dialog.html1e6be4.js','common/wx/widgetBridge.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/widgetBridge1e6be4.js','common/wx/autocomplete.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/autocomplete1e6be4.js','widget/pagination.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/pagination1e6be4.css','tpl/pagebar.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/pagebar.html1e6be4.js','tpl/popup.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/popup.html1e6be4.js','tpl/RichBuddy/RichBuddyLayout.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/RichBuddy/RichBuddyLayout.html1e6be4.js','tpl/RichBuddy/RichBuddyContent.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/RichBuddy/RichBuddyContent.html1e6be4.js','widget/rich_buddy.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/rich_buddy1e6be4.css','common/wx/dateSelect.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/dateSelect1e6be4.js','widget/date_select.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/date_select1e6c26.css','tpl/dateSelect.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/dateSelect.html1e6be4.js','common/wx/dragHelper.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/dragHelper1e6be4.js','biz_web/widget/dropdown.css': 'https://res.wx.qq.com/mpres/htmledition/style/biz_web/widget/dropdown1e6be4.css','tpl/dropdowns.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/dropdowns.html1e6be4.js','widget/slider.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/slider1e6c26.css','tpl/slider.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/slider.html1e6be4.js','tpl/editit.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/editit.html1e6be4.js','common/wx/iframe.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/iframe1e6be4.js','common/wx/wxt.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/wxt1e6be4.js','common/wx/noticeBox.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/noticeBox1e6be4.js','tpl/noticeBox.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/noticeBox.html1e6be4.js','tpl/hourspan.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/hourspan.html1e6be4.js','common/wx/trade.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/trade1e6be4.js','widget/verifycode.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/verifycode1e6be4.css','common/wx/accordion.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/accordion1e6be4.js','tpl/accordion.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/accordion.html1e6be4.js','tpl/top.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/top.html1e6be4.js','common/wx/multiDropdown.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/multiDropdown1e6be4.js','widget/dropdown_menu.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/dropdown_menu1e6be4.css','tpl/multi_dropdown.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/multi_dropdown.html1e6be4.js','tpl/multi_ddchild.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/multi_ddchild.html1e6be4.js','common/wx/tooltipsManager.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/tooltipsManager1e6be4.js','widget/processor_bar.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/processor_bar1e6c26.css','tpl/step.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/step.html1e6be4.js','tpl/simplePopup.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/simplePopup.html1e6be4.js','tpl/tooltips.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/tooltips.html1e6be4.js','common/wx/pay_by_qrcode.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/pay_by_qrcode1e6be4.js','tpl/pay_by_qrcode.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/pay_by_qrcode.html1e6be4.js','common/wx/phone_validate.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/phone_validate1e6be4.js','tpl/phone_validate.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/phone_validate.html1e6be4.js','biz_web/lib/uploadify.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/uploadify1e6be4.js','widget/upload.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/upload1e6be4.css','tpl/uploader.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/uploader.html1e6be4.js','common/wx/keyword.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/keyword1e6be4.js','tpl/keyword.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/keyword.html1e6be4.js','tpl/basekeyword.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/basekeyword.html1e6be4.js','common/wx/tooltip.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/tooltip1e6be4.js','tpl/tooltip.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/tooltip.html1e6be4.js','widget/areaselector.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/areaselector1e6c26.css','tpl/multiSelector/list.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/multiSelector/list.html1e6be4.js','tpl/multiSelector/item.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/multiSelector/item.html1e6be4.js','common/wx/messenger.method.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/messenger.method1e6be4.js','common/wx/messenger.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx/messenger1e6be4.js','tpl/tab.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/tab.html1e6be4.js','widget/msg_tab.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/msg_tab1e6c26.css','widget/emoji.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/emoji1e6c26.css','biz_web/lib/spin.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/spin1e6be4.js','business/right.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/right1e6be4.js','business/setting.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/setting1e6be4.js','business/course.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/course1e6be4.js','business/release.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/release1e6be4.js','business/source.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/source1e6be4.js','biz_common/underscore.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/underscore1e6be4.js','business/arbist.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/arbist1e6be4.js','business/first_check.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/first_check1e6be4.js','business/pay-reg.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/pay-reg1e6be4.js','business/overview.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/overview1e6be4.js','business/faq.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/faq1e6be4.js','business/rightlist.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/rightlist1e6be4.js','business/info.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/info1e6be4.js','business/order.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/order1e6be4.js','business/rank.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/rank1e6be4.js','business/whitelist.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/whitelist1e6be4.js','business/iframe.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/business/iframe1e6be4.js','payApply/businessMenu.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/businessMenu1e6be4.js','payApply/release.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/release1e6be4.js','payApply/earnest.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/earnest1e6be4.js','payApply/finance.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/finance1e6be4.js','payApply/baseInfo.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/baseInfo1e6be4.js','payApply/businessInfo.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/businessInfo1e6be4.js','payApply/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/payApply/index1e6be4.js','mass/send.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/mass/send1e6be4.js','mass/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/mass/list1e6be4.js','shop/deliveryedit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/deliveryedit1e76b5.js','shop/delivery_common.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/delivery_common1e76b5.js','shop/express.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/express1e76b5.js','shop/shelf_management.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/shelf_management1e76b5.js','shop/tmpl_management.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/tmpl_management1e76b5.js','shop/shelf_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/shelf_cgi1e76b5.js','shop/order_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/order_cgi1e76b5.js','shop/goods_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/goods_cgi1e76b5.js','shop/create_img.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/create_img1e76b5.js','shop/imgs.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/imgs1e76b5.js','tpl/shop/grouplist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/shop/grouplist.html1e76b5.js','tpl/shop/igoodlist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/shop/igoodlist.html1e76b5.js','tpl/shop/goodlist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/shop/goodlist.html1e76b5.js','tpl/shop/minilist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/shop/minilist.html1e76b5.js','shop/group_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/group_cgi1e76b5.js','common/qq/jquery.plugin/zclip.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/qq/jquery.plugin/zclip1e6be4.js','shop/create.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/create1e76b5.js','shop/create_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/create_cgi1e76b5.js','shop/create_edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/create_edit1e76b5.js','shop/config.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/config1e76b5.js','shop/order_list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/order_list1e928c.js','shop/overview.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/overview1e928c.js','shop/shelf_edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/shelf_edit1e76b5.js','shop/myshelf.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/myshelf1e76b5.js','shop/imglist.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/imglist1e76b5.js','shop/precreate.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/precreate1e76b5.js','shop/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/list1e76b5.js','shop/template_choose.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/template_choose1e76b5.js','shop/category.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/category1e76b5.js','shop/test.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/test1e76b5.js','shop/deliverylist.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/deliverylist1e76b5.js','shop/order_info.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/order_info1e928c.js','shop/faq.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/faq1e76b5.js','shop/shop_guide.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop/shop_guide1e76b5.js','safe/tpl/safe_check.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/tpl/safe_check.html1e6be4.js','safe/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/index1e6be4.js','safe/notify.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/notify1e7c39.js','safe/Mobile.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/Mobile1e6be4.js','safe/phone.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/phone1e6be4.js','safe/remind.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/remind1e6be4.js','safe/phone_modify.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/phone_modify1e6be4.js','safe/protect.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/protect1e7c39.js','safe/token.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/token1e6be4.js','safe/rebind.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/rebind1e97b7.js','biz_web/widget/qrcode_scan.css': 'https://res.wx.qq.com/mpres/htmledition/style/biz_web/widget/qrcode_scan1e6c26.css','safe/force.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/safe/force1e7c39.js','mall/template_list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/mall/template_list1e6be4.js','mall/template_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/mall/template_cgi1e6be4.js','mall/card_verify.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/mall/card_verify1e6be4.js','service/detail.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/detail1e6be4.js','service/apply.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/apply1e6be4.js','service/msgTpl.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/msgTpl1e6be4.js','service/myService.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/myService1e6be4.js','service/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/index1e6be4.js','service/pay.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/pay1e6be4.js','service/base.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/base1e6be4.js','service/order.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/order1e9223.js','service/package.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/package1e6be4.js','service/step.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/service/step1e6be4.js','widget/media/media_dialog.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/media/media_dialog1e6c26.css','tpl/media/dialog/file_layout.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/dialog/file_layout.html1e6be4.js','tpl/media/dialog/appmsg_layout.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/dialog/appmsg_layout.html1e6be4.js','tpl/media/dialog/videomsg_layout.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/dialog/videomsg_layout.html1e6be4.js','tpl/media/dialog/file.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/dialog/file.html1e6be4.js','media/appmsg_list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/media/appmsg_list1e6be4.js','media/videomsg_edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/media/videomsg_edit1e6be4.js','media/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/media/list1e6be4.js','media/appmsg_edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/media/appmsg_edit1e6be4.js','widget/media/appmsg_editor.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/media/appmsg_editor1e6be4.css','tpl/media/appmsg_edit/first_appmsg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/appmsg_edit/first_appmsg.html1e6be4.js','tpl/media/appmsg_edit/small_appmsg.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/appmsg_edit/small_appmsg.html1e6be4.js','tpl/media/appmsg_edit/editor.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/media/appmsg_edit/editor.html1e6be4.js','tmplmsg/preview.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/preview1e6be4.js','tmplmsg/tpl_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/tpl_cgi1e6be4.js','tmplmsg/detail.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/detail1e6be4.js','tmplmsg/apply.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/apply1e6be4.js','tmplmsg/tplEdit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/tplEdit1e6be4.js','widget/colorpicker.css': 'https://res.wx.qq.com/mpres/htmledition/style/widget/colorpicker1e6be4.css','tmplmsg/searchBar.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/searchBar1e6be4.js','tmplmsg/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/list1e6be4.js','tmplmsg/store.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tmplmsg/store1e6be4.js','accusation/accuse_info.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/accusation/accuse_info1e6be4.js','tpl/setting/more_size.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/setting/more_size.html1e6be4.js','tpl/notice/index.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/notice/index.html1e6be4.js','tpl/shop/skulist.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/shop/skulist.html1e76b5.js','tpl/biz_web/ui/dropdown.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/biz_web/ui/dropdown.html1e6be4.js','tpl/biz_web/ui/checkbox.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/biz_web/ui/checkbox.html1e6be4.js','tpl/biz_web/ui/dateRange.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/biz_web/ui/dateRange.html1e6be4.js','tpl/account_message_list.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/account_message_list.html1e6be4.js','tpl/confirm.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/confirm.html1e6be4.js','tpl/simple_popup.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/simple_popup.html1e6be4.js','tpl/remark.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/remark.html1e6be4.js','tpl/material/material_dialog/layout.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/material/material_dialog/layout.html1e71a5.js','tpl/material/material_dialog/item.html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/tpl/material/material_dialog/item.html1e71a5.js','ivr/ivr_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ivr/ivr_cgi1e6be4.js','ivr/keywords.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ivr/keywords1e6be4.js','ivr/reply.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/ivr/reply1e6be4.js','advanced/dev.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/dev1e7c39.js','advanced/interface.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/interface1e7c39.js','advanced/iframe-crossdomain.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/iframe-crossdomain1e6be4.js','advanced/menuSetting.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/menuSetting1e6be4.js','biz_common/xss.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/xss1e6be4.js','biz_common/jquery.ui/jquery.ui.sortable.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/jquery.ui/jquery.ui.sortable1e6be4.js','advanced/verify.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/verify1e6be4.js','advanced/edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/edit1e6be4.js','advanced/warning.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/warning1e6be4.js','advanced/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/index1e6be4.js','advanced/menuApply.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/menuApply1e6be4.js','advanced/customer_apply.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/advanced/customer_apply1e6be4.js','biz_web/lib/audiojs.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_web/lib/audiojs1e6be4.js','biz_web/widget/date_range.css': 'https://res.wx.qq.com/mpres/htmledition/style/biz_web/widget/date_range1e6c26.css','jquery-1.7.2.min.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/jquery-1.7.2.min1e6be4.js','jquery-1.8.3.min.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/jquery-1.8.3.min1e6be4.js','biz_common/utils/string/html.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/utils/string/html1e6be4.js','biz_common/framework/localforage.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/framework/localforage1e6be4.js','promise.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/promise.js','biz_common/framework/drivers/indexeddb.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/framework/drivers/indexeddb.js','biz_common/framework/drivers/localstorage.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/framework/drivers/localstorage.js','biz_common/framework/drivers/websql.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/framework/drivers/websql.js','biz_common/jquery-1.9.1.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/biz_common/jquery-1.9.11e6be4.js','bizpage/cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/bizpage/cgi1e6be4.js','bizpage/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/bizpage/list1e6be4.js','material/list.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/material/list1e6be4.js','material/material_cgi.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/material/material_cgi1e6be4.js','material/edit.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/material/edit1e6be4.js','shop_verify/index.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop_verify/index1e6be4.js','shop_verify/info.js': 'https://res.wx.qq.com/mpres/zh_CN/htmledition/js/shop_verify/info1e6be4.js'};</script>
+        <script src="https://res.wx.qq.com/mpres/zh_CN/htmledition/js/sea1e6be4.js" type="text/javascript"></script>  
+<script src="https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/lib1e6be4.js" type="text/javascript"></script>	
+<script type="text/javascript">
+    window.wx ={
+        version:"4.0.0",
+        data:{
+            t:"1707207416",
+            ticket:"79e65ef6cbff606c46d78f5d704b2259ae1b5790",
+            lang:'zh_CN',
+            param:["&amp;token=1707207416",'&amp;lang=zh_CN'].join(""),
+            uin:"2392020057",
+            uin_base64:"MjM5MjAyMDA1Nw==",
+            user_name:"innolauncher",
+            nick_name:"意启InnoLauncher",
+            time:"1403597318"||new Date().getTime()/1000
+        },
+        path:{
+            video : "https://res.wx.qq.com/mpres/zh_CN/htmledition/plprecorder/biz_web/video-js1d7f8c.swf",    
+            audio : "https://res.wx.qq.com/mpres/zh_CN/htmledition/plprecorder/biz_web/audiojs1d7f8c.swf",
+            uploadify : "https://res.wx.qq.com/mpres/zh_CN/htmledition/plprecorder/biz_web/uploadify1d7f8c.swf",
+            rimgcrop : "https://res.wx.qq.com/mpres/htmledition/images/cut-round1df61f.gif"
+        },
+        acl:{
+                        "msg_acl" : {
+                "can_text_msg" : 1,
+                "can_image_msg" : 1,
+                "can_voice_msg" : 1,
+                "can_video_msg" : 1,
+                "can_app_msg" : 1,
+                "can_commodity_app_msg" : 0
+            },
+            "ivr_acl" : {
+                "can_text_msg" : 1,
+                "can_image_msg" : 1,
+                "can_voice_msg" : 1,
+                "can_video_msg" : 1,
+                "can_app_msg" : 1,
+                "can_commodity_app_msg" : 0
+            }
+                    },
+        events:{}//全局的事件绑定
+    };
+</script>
+<script src="https://res.wx.qq.com/mpres/zh_CN/htmledition/js/common/wx1e931b.js" type="text/javascript"></script>	
+
+        <script>
+                var script_begin = (+(new Date()));
+        </script>
+        
+<script type="text/javascript">define('widget/verifycode.css', [], function(){return null;});
+define('biz_web/widget/dropdown.css', [], function(){return null;});
+define('widget/datepicker.css', [], function(){return null;});
+define('widget/upload.css', [], function(){return null;});
+define('widget/date_select.css', [], function(){return null;});
+define('widget/media/appmsg_editor.css', [], function(){return null;});</script>
+<script src="https://res.wx.qq.com/c/=/mpres/zh_CN/htmledition/js/tpl/dialog.html1e6be4.js,/mpres/zh_CN/htmledition/js/biz_common/jquery.ui/jquery.ui.draggable1e6be4.js,/mpres/zh_CN/htmledition/js/common/qq/events1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/verifycode.html1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/lib/spin1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/biz_web/ui/dropdown.html1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/biz_web/ui/checkbox.html1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/top.html1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/lib/swfobject1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/uploader.html1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/lib/uploadify1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/tooltips.html1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/lib/json1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/popup.html1e6be4.js,/mpres/zh_CN/htmledition/js/common/wx/widgetBridge1e6be4.js" type="text/javascript"></script>
+<script src="https://res.wx.qq.com/c/=/mpres/zh_CN/htmledition/js/common/wx/verifycode1e6be4.js,/mpres/zh_CN/htmledition/js/common/qq/mask1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/media/appmsg_edit/editor.html1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/media/appmsg_edit/small_appmsg.html1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/media/appmsg_edit/first_appmsg.html1e6be4.js,/mpres/zh_CN/htmledition/js/tpl/simplePopup.html1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/ui/dropdown1e6be4.js,/mpres/zh_CN/htmledition/js/common/lib/datepicker1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/ui/checkbox1e6be4.js,/mpres/zh_CN/htmledition/js/common/wx/top1e6be4.js,/mpres/zh_CN/htmledition/js/biz_common/jquery.validate1e6be4.js,/mpres/zh_CN/htmledition/js/common/wx/upload1e6be4.js,/mpres/zh_CN/htmledition/js/biz_common/moment1e6be4.js,/mpres/zh_CN/htmledition/js/common/wx/tooltips1e6be4.js,/mpres/zh_CN/htmledition/js/biz_web/lib/store1e6be4.js" type="text/javascript"></script>
+<script src="https://res.wx.qq.com/c/=/mpres/zh_CN/htmledition/js/media/media_cgi1e6be4.js,/mpres/zh_CN/htmledition/js/common/wx/time1e6be4.js,/mpres/zh_CN/htmledition/js/media/appmsg_edit1e6be4.js" type="text/javascript"></script><script type="text/javascript">var page_dom_load_id = 23521, page_dom_load_key = 57;
+var page_onload_id = 23521, page_onload_key = 58;
+var page_js_script_id = 23521, page_js_script_key = 59;
+var page_ava_id = 23521, page_ava_key = 63;</script>
+<script id="votePop" type="text/html">
+    &lt;div class="tc_dialog_content" &gt;
+        &lt;form id="voteForm"&gt;
+
+        &lt;div class="vote_meta"&gt;
+            &lt;h4 class="vote_meta_title"&gt;投票主题&lt;/h4&gt;
+            &lt;div class="vote_meta_detail"&gt;
+                &lt;div class="frm_controls"&gt;
+                    &lt;span class="frm_input_box vote_title"&gt;&lt;input autofocus="" type="text" placeholder="十五字以内" class="frm_input" name="title" id="jsVoteTitle"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="vote_meta"&gt;
+            &lt;h4 class="vote_meta_title"&gt;投票类型&lt;/h4&gt;
+            &lt;div class="vote_meta_detail"&gt;
+                &lt;label class="vote_radio_label selected"&gt;
+                    &lt;i class="icon_radio"&gt;&lt;/i&gt;
+                    &lt;span type="label_content"&gt;投票为单选&lt;/span&gt;
+                    &lt;input name="isMlt" type="radio" value="0" class="vote_radio" checked&gt;
+                &lt;/label&gt;
+                &lt;label class="vote_radio_label"&gt;
+                    &lt;i class="icon_radio"&gt;&lt;/i&gt;
+                    &lt;span type="label_content"&gt;投票为多选&lt;/span&gt;
+                    &lt;input name="isMlt" type="radio" value="1" class="vote_radio"&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="vote_meta time_setting"&gt;
+            &lt;h4 class="vote_meta_title"&gt;投票截止时间&lt;/h4&gt;
+            &lt;div class="vote_meta_detail"&gt;
+                &lt;div class="date_select timepicker"&gt;
+                    &lt;div class="datepicker_area"&gt;
+                        &lt;span class="btn datepicker_switch"&gt;
+                            &lt;input type="text" class="frm_input" style="ime-mode:disabled" onpaste="return false" id="jsVoteDate"&gt;
+                            &lt;i class="icon_datepicker"&gt;&lt;/i&gt;
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="dropdown_menu time" id="jsVoteHour"&gt;&lt;/div&gt;
+                    &lt;span class="date_select_gap"&gt;时&lt;/span&gt;
+
+                    &lt;div class="dropdown_menu time" id="jsVoteMin"&gt;&lt;/div&gt;
+                    &lt;span class="date_select_gap"&gt;分&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="vote_meta option_setting"&gt;
+            &lt;h4 class="vote_meta_title"&gt;选项设置&lt;span class="tips_global"&gt;(最多设置6个选项)&lt;/span&gt;&lt;/h4&gt;
+            &lt;div class="vote_meta_detail" id="voteOptions"&gt;
+                &lt;div class="frm_control_group"&gt;
+                    &lt;div class="frm_label"&gt;选项一&lt;/div&gt;
+                    &lt;div class="frm_controls"&gt;
+                        &lt;span class="frm_input_box"&gt;&lt;input type="text" placeholder="十五字以内" class="frm_input" name="option0"&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="frm_control_group"&gt;
+                    &lt;div class="frm_label"&gt;选项二&lt;/div&gt;
+                    &lt;div class="frm_controls"&gt;
+                        &lt;span class="frm_input_box"&gt;&lt;input type="text" placeholder="十五字以内" class="frm_input" name="option1"&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="vote_meta_detail tips_wrp"&gt;
+                &lt;p id="voteAdd" class="tips_global option_tips"&gt;
+                    &lt;a href="javascript:void(0);" onclick="return false;"&gt;添加选项&lt;/a&gt;
+                &lt;/p&gt;
+                &lt;p id="voteFull" class="tips_global option_tips"&gt;选项已满，不可继续添加&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+</script>
+
+<script id="voteExtra" type="text/html">
+    &lt;div class="frm_control_group extra"&gt;
+        &lt;div class="frm_label"&gt;选项{vote_index_label}&lt;/div&gt;
+        &lt;div class="frm_controls"&gt;
+            &lt;span class="frm_input_box"&gt;&lt;input type="text" placeholder="十五字以内" class="frm_input" name="option{vote_index + 2}" data-index="{vote_index}" {if vote_input}value="{vote_input}"{/if}&gt;&lt;/span&gt;
+            &lt;a class="vote_remove_link" onclick="return false;" data-index="{vote_index}" href="javascript:void(0);"&gt;删除&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</script>
+
+
+<script src="https://res.wx.qq.com/mpres/htmledition/ueditor/editor_config1e6f39.js"></script>
+<script src="https://res.wx.qq.com/mpres/htmledition/ueditor/editor_all_min1e5af7.js"></script>
+<script type="text/javascript">
+    wx.cgiData = {};
+
+    (function(){
+        var 
+            infos = {"item":[]},
+            item = (infos.item &amp;&amp; infos.item[0] ) || {};
+
+        wx.cgiData.app_id = "";
+        wx.cgiData.type = "10";
+        wx.cgiData.isMul = 1*"0";
+        wx.cgiData.appmsg_data = item;
+        wx.cgiData.can_use_vote = 1;
+    })();
+    seajs.use('media/appmsg_edit.js', wx_main);;
+</script>
+
+        <script>
+            function getico(i){
+                var _img = new Image(1, 1);
+                _img.src = wx.url(location.protocol + "//" + location.host + "/misc/getico" + "?location=" + (i||-1) + "&amp;rand=" + Math.random());
+            };
+            getico('0');
+            
+            console.log("DOM Loaded Time : " + (mp.time.domLoaded - mp.time.begin) + " ms");
+            if (typeof page_dom_load_id != "undefined" &amp;&amp; typeof page_dom_load_key != "undefined"){
+                wx_save_report(page_dom_load_id, page_dom_load_key, mp.time.domLoaded - mp.time.begin);
+                wx_save_report(page_all_dom_load_id, page_all_dom_load_key, mp.time.domLoaded - mp.time.begin);
+            }
+            window.onload = function(){
+                mp.time.allResLoaded = (+new Date());
+                
+                console.log('All Res Loaded Time : %s ms'.sprintf(mp.time.allResLoaded - mp.time.begin));
+                if (typeof page_onload_id != "undefined" &amp;&amp; typeof page_onload_key != "undefined"){
+                    wx_save_report(page_onload_id, page_onload_key, mp.time.allResLoaded - mp.time.begin);
+                    wx_save_report(page_all_onload_id, page_all_onload_key, mp.time.allResLoaded - mp.time.begin);
+                }
+                wx_report();
+            };
+        </script>
+    
+        
+
+
+<div id="edui_fixedlayer" style="position: fixed; left: 0px; top: 0px; width: 0px; height: 0px;" class=" edui-default"><div onmousedown="return false;" class="edui-popup  edui-bubble edui-default" id="edui41" style="display: none;"> <div class="edui-popup-body edui-default" id="edui41_body"> <iframe width="100%" height="100%" frameborder="0" src="javascript:" style="position:absolute;z-index:-1;left:0;top:0;background-color: transparent;" class=" edui-default"></iframe> <div class="edui-shadow edui-default"></div> <div class="edui-popup-content edui-default" id="edui41_content">  </div> </div></div></div></body></html>
