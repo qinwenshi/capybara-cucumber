@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cucumber features/weixin.feature
+cucumber

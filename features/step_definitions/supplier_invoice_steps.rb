@@ -1,6 +1,7 @@
 Given(/^I am directed to my launch pad$/) do
 	visit 'https://wdciw01.wdf.sap.corp:7099/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html?sap-client=200&sap-language=EN#'
-	fill_in 'USERNAME_FIELD-inner', with: 'findemo'
+  $stdin.gets()
+  fill_in 'USERNAME_FIELD-inner', with: 'findemo'
 	fill_in 'PASSWORD_FIELD-inner', with: 'findemo'
 	click_on('LOGIN_LINK')
 end

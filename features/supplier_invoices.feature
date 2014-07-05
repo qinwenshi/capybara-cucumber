@@ -7,5 +7,4 @@ Feature: Track supplier invoices
 		Given I am directed to my launch pad
 		When I cancel the input box if any
 		And I goto the Track supplier invoices
-		#And I cancel the input box if any
 		Then I can see a "blocked" invoice named "NorthWoods" with Origional Amount 100 EUR
